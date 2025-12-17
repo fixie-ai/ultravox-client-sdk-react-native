@@ -32,6 +32,7 @@
     "!**/.*"
   ],
   "scripts": {
+    "prepublishOnly": "node -p \"'export const ULTRAVOX_SDK_VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
     "clean": "del-cli lib",
     "prepare": "bob build",
     "typecheck": "tsc",
@@ -115,7 +116,6 @@
     "quoteProps": "consistent",
     "singleQuote": true,
     "tabWidth": 2,
-    "trailingComma": "es5",
     "useTabs": false
   },
   "create-react-native-library": {
@@ -126,5 +126,10 @@
       "eslint"
     ],
     "version": "0.56.0"
+  },
+  "dependencies": {
+    "@livekit/react-native": "^2.9.6",
+    "@livekit/react-native-webrtc": "^137.0.2",
+    "livekit-client": "^2.16.1"
   }
 }
