@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet, TextInput, Button } from 'react-native';
+import { View, StyleSheet, TextInput, Text, Button } from 'react-native';
 import { useUltravox, type Transcript } from 'ultravox-react-native';
 
 const UnjoinedScreen = ({
@@ -40,23 +40,16 @@ const TranscriptView = ({
 }) => {
   return (
     <>
-      {callTranscript.map((transcript, index) => (
-        <div key={index} style={{ order: `-${index}` }}>
+      {callTranscript.map((transcript) => (
+        <Text id={`${transcript.ordinal}-${transcript.text}`}>
           {showUserTranscripts || transcript.speaker === 'agent' ? (
             <>
-              <p>
-                <span className="text-gray-600">
-                  {transcript.speaker.toUpperCase()}
-                </span>
-              </p>
-              <p className="mb-4">
-                <span>{transcript.text}</span>
-              </p>
+              {transcript.speaker.toUpperCase()}: {transcript.text}
             </>
           ) : (
             <></>
           )}
-        </div>
+        </Text>
       ))}
     </>
   );

@@ -8,7 +8,9 @@
     "ios": "expo run:ios"
   },
   "dependencies": {
+    "@expo/metro-config": "^54.0.12",
     "@expo/metro-runtime": "~6.1.2",
+    "babel-preset-expo": "^54.0.9",
     "expo": "~54.0.29",
     "expo-status-bar": "~3.0.9",
     "react": "19.1.0",
