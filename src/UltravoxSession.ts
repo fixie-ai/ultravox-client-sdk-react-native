@@ -372,7 +372,6 @@ export class UltravoxSession {
     const implementation = this.toolImplementations.get(toolName);
 
     if (!implementation) {
-      // Send error response
       this.sendDataMessage({
         type: 'client_tool_result',
         invocationId,

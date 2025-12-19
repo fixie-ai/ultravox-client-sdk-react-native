@@ -52,6 +52,8 @@ An Expo server will start, from which you can open an Android build on your conn
 ## Publishing
 
 1. Test using the example app.
-2. Bump version in `package.json`.
-3. `npm publish`
-4. Create a new Tag and Release on GitHub please.
+1. Bump version in `package.json`.
+1. `npm publish --dry-run --git-checks=false`
+1. Open PR, get changes merged, then continue from `main`.
+1. `npm publish`
+1. Create a new Tag and Release on GitHub please.
