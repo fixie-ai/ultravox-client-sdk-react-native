@@ -91,7 +91,7 @@ export class UltravoxSession {
 
     registerGlobals();
     const url = new URL(joinUrl);
-    let uvClientVersion = `web_${ULTRAVOX_SDK_VERSION}`;
+    let uvClientVersion = `rn_${ULTRAVOX_SDK_VERSION}`;
     if (clientVersion) {
       uvClientVersion += `:${clientVersion}`;
     }
