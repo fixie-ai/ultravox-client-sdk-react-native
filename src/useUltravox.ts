@@ -66,29 +66,46 @@ export function useUltravox({
 
     session.addEventListener('transcripts', handleTranscriptsChange);
 
+    return () => {
+      session.removeEventListener('transcripts', handleTranscriptsChange);
+    };
+  }, [session]);
+
+  useEffect(() => {
     if (onStatusChange) {
       session.addEventListener('status', onStatusChange);
     }
+
+    return () => {
+      if (onStatusChange) {
+        session.removeEventListener('status', onStatusChange);
+      }
+    };
+  }, [session, onStatusChange]);
+
+  useEffect(() => {
     if (onTranscriptsChange) {
       session.addEventListener('transcripts', onTranscriptsChange);
     }
+
+    return () => {
+      if (onTranscriptsChange) {
+        session.removeEventListener('transcripts', onTranscriptsChange);
+      }
+    };
+  }, [session, onTranscriptsChange]);
+
+  useEffect(() => {
     if (onDataMessage) {
       session.addEventListener('data_message', onDataMessage);
     }
 
     return () => {
-      session.removeEventListener('transcripts', handleTranscriptsChange);
-      if (onStatusChange) {
-        session.removeEventListener('status', onStatusChange);
-      }
-      if (onTranscriptsChange) {
-        session.removeEventListener('transcripts', onTranscriptsChange);
-      }
       if (onDataMessage) {
         session.removeEventListener('data_message', onDataMessage);
       }
     };
-  }, [session, onStatusChange, onTranscriptsChange, onDataMessage]);
+  }, [session, onDataMessage]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -102,6 +119,7 @@ export function useUltravox({
       joinUrl: string,
       joinOpts: { clientVersion?: string } | undefined
     ) => {
+      setTranscripts([]);
       await session.joinCall(joinUrl, joinOpts);
     },
     [session]
@@ -109,7 +127,6 @@ export function useUltravox({
 
   const leaveCall = useCallback(async () => {
     await session.leaveCall();
-    setTranscripts([]);
   }, [session]);
 
   return {
