@@ -1,7 +1,7 @@
 {
   "name": "ultravox-react-native",
   "version": "0.0.1",
-  "description": "Reactive Native client SDK for Ultravox",
+  "description": "React Native client SDK for Ultravox",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {

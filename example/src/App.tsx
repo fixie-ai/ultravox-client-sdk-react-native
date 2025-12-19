@@ -41,7 +41,7 @@ const TranscriptView = ({
   return (
     <>
       {callTranscript.map((transcript) => (
-        <Text id={`${transcript.ordinal}-${transcript.text}`}>
+        <Text key={`${transcript.ordinal}-${transcript.text}`}>
           {showUserTranscripts || transcript.speaker === 'agent' ? (
             <>
               {transcript.speaker.toUpperCase()}: {transcript.text}
